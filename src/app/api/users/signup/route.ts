@@ -10,7 +10,7 @@ export async function POST(request : NextRequest){
     try {
 
         const reqBody = await request.json()
-        const {employee_id,username,email,password,designation,department} = reqBody
+        const {username,email,password,employee_id,department,designation} = reqBody
 
         const user = await User.findOne({email})
 
