@@ -4,6 +4,7 @@ import { connect } from '@/app/dbConfig/dbConfig';
 import { NextRequest, NextResponse } from 'next/server';
 import mongoose from 'mongoose';
 import Grievance from '@/app/models/grievance'// Adjust the import path according to your project structure
+import {getIdFromToken} from '@/app/helpers/getTokenDetails'
 
 connect(); // Establish MongoDB connection
 export async function GET(request: NextRequest) {
@@ -12,7 +13,10 @@ export async function GET(request: NextRequest) {
         const url = new URL(request.url);
         console.log(url);
 
-        const users = await Grievance.find(); // Fetching all user documents
+        const Id = await getIdFromToken(request)
+        const users = await Grievance.find({_id : Id})
+
+        // const users = await Grievance.find(); // Fetching all user documents
 
         return NextResponse.json({
             message: "Users fetched successfully",

@@ -24,7 +24,7 @@ const FetchUsers: React.FC = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get("/api/users/grievancestatus"); // Ensure this matches your API endpoint
-        setUsers(response.data.users);
+        setUsers(response.data.users || "No Data Found");
         setLoading(false);
         toast.success("Users fetched successfully!");
       } catch (error: any) {

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -106,9 +107,9 @@ const Login: React.FC = () => {
               </label>
             </div>
             <div className="text-sm">
-              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+              <Link href="/forgotpassword" className="font-medium text-indigo-600 hover:text-indigo-500">
                 Forgot your password?
-              </a>
+              </Link>
             </div>
           </div>
           <div>
@@ -126,10 +127,13 @@ const Login: React.FC = () => {
         <div className="text-center">
           <p className="mt-2 text-sm text-gray-600">
             Not a member?{" "}
-            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+            <Link href="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
               Signup Here
-            </a>
+            </Link>
           </p>
+          <Link className="font-medium text-indigo-600 hover:text-green-500" href='/'>
+              Go Back
+          </Link>
         </div>
       </div>
     </div>
