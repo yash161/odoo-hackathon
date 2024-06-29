@@ -25,7 +25,7 @@ function Home() {
               <Link href="/login" passHref>
                 <Button variant="contained">Login</Button>
               </Link>
-              <Link href="/register" passHref>
+              <Link href="/signup" passHref>
                 <Button variant="outlined" sx={{ ml: 2 }}>Register</Button>
               </Link>
             </Box>
