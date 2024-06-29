@@ -13,7 +13,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
   textAlign: 'center',
   color: theme.palette.text.secondary,
-  height: '100%', // Make sure paper takes full height of the grid item
+  height: '100%',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
@@ -28,7 +28,10 @@ const IconWrapper = styled(Avatar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   width: theme.spacing(7),
   height: theme.spacing(7),
-  margin: 'auto',
+  margin: '0 auto',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   marginBottom: theme.spacing(2),
 }));
 
