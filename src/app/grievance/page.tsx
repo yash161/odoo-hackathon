@@ -31,7 +31,7 @@ const GrievancePage: React.FC = () => {
       console.log("Successfully submitted grievance", response.data);
       toast.success("Grievance submitted successfully");
       setTimeout(() => {
-        router.push("/dashboard"); // Redirect to dashboard after successful submission
+        router.push("/"); // Redirect to dashboard after successful submission
       }, 1000);
     } catch (error: any) {
       console.error("Failed to submit grievance", error.message);

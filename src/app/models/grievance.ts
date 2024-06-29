@@ -24,6 +24,10 @@ const grievanceSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    employee_id: {
+        type: Number,
+        required : [true],
     }
 });
 
