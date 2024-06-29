@@ -17,7 +17,13 @@ export async function GET(request: NextRequest) {
 
         const user = await User.findOne({_id : Id})
 
-        const users = await Grievance.find({employee_id : user.employee_id})
+        
+        var users = await Grievance.find()
+        if(!user.isAdmin){
+             users = await Grievance.find({employee_id : user.employee_id})
+        }
+
+        
 
         // const users = await Grievance.find(); // Fetching all user documents
 
