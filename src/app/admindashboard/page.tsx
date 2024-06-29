@@ -13,6 +13,10 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
   textAlign: 'center',
   color: theme.palette.text.secondary,
+  height: '100%', // Make sure paper takes full height of the grid item
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
   transition: 'transform 0.3s, box-shadow 0.3s',
   '&:hover': {
     transform: 'translateY(-10px)',
@@ -52,7 +56,7 @@ const AdminDashboard: React.FC = () => {
               Update the status of grievances efficiently.
             </Typography>
             <Box sx={{ mt: 2 }}>
-              <Link href="/update-grievance" passHref>
+              <Link href="/updategrievance" passHref>
                 <Button variant="contained">Update Status</Button>
               </Link>
             </Box>
