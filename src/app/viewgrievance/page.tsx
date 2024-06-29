@@ -27,7 +27,7 @@ const FetchUsers: React.FC = () => {
         setUsers(response.data.users);
         setLoading(false);
         toast.success("Users fetched successfully!");
-      } catch (error) {
+      } catch (error:any) {
         setError(error.response?.data?.error || "An error occurred");
         setLoading(false);
         toast.error("Failed to fetch users");
