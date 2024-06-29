@@ -1,17 +1,18 @@
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
+import { SNSClient, SubscribeCommand } from "@aws-sdk/client-sns";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import Link from "next/link";
-
+import { Credentials } from "@aws-sdk/types";
 interface GrievanceForm {
   grievanceType: string;
   description: string;
   severity: string;
   documents: string[];
 }
-
+const snsClient = new SNSClient({ region: "us-east-1" });
 const GrievancePage: React.FC = () => {
   const router = useRouter();
 
@@ -23,13 +24,33 @@ const GrievancePage: React.FC = () => {
   });
 
   const [loading, setLoading] = useState(false);
-
+  const awsCredentials: Credentials = {
+    accessKeyId: process.env.AWS_ACCESS || "",
+    secretAccessKey: process.env.AWS_SECRET || "",
+  };
+  
+  const snsClient = new SNSClient({
+    region: "us-east-1", // Update to your region
+    credentials: awsCredentials,
+  });
   const handleSubmit = async () => {
     try {
       setLoading(true);
       const response = await axios.post("/api/users/grievance", grievance);
       console.log("Successfully submitted grievance", response.data);
+      console.log("Email is :",response.data.user_email);
       toast.success("Grievance submitted successfully");
+      const subscribeCommand = new SubscribeCommand({
+        Protocol: "email",
+        TopicArn: "arn:aws:sns:us-east-1:992382554424:statusupdate", // Update to your topic ARN
+        Endpoint: response.data.user_email,
+      });
+  
+      const subscribeResponse = await snsClient.send(subscribeCommand);
+      console.log("Successfully subscribed to topic", subscribeResponse);
+  
+      toast.success("Subscription confirmation email sent. Please check your email.");
+  
       setTimeout(() => {
         router.push("/userdashboard"); // Redirect to dashboard after successful submission
       }, 1000);

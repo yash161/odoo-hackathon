@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-sns": "^3.606.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.21",
     "@mui/material": "^5.15.21",
     "@radix-ui/react-label": "^2.1.0",
     "@tabler/icons-react": "^3.7.0",
+    "aws-sdk": "^2.1651.0",
     "axios": "^1.7.2",
     "axois": "^0.0.1-security",
     "bcryptjs": "^2.4.3",
