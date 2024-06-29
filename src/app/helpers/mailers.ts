@@ -7,10 +7,10 @@ export const sendMail = async ({email , emailType , userId} : any) => {
     try {
         const hashedToken = await bcryptjs.hash(userId.toString(),10)
         if(emailType === 'VERIFY'){
-            await User.findByIdAndUpdate(userId,{$set:{verificationToken: hashedToken,verificationExpiry:Date() + 3600000}})
+            await User.findByIdAndUpdate(userId,{$set:{verification_code: hashedToken}})
         }
           else if(emailType === 'RESET'){
-            await User.findByIdAndUpdate(userId,{$set:{forgotpasswordToken: hashedToken, forgotpasswordExpiry: Date.now() + 3600000}})
+            await User.findByIdAndUpdate(userId,{$set:{fforgot_password: hashedToken}})
         }
 
         const transport = nodemailer.createTransport({
