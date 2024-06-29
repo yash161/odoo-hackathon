@@ -27,7 +27,7 @@ const FetchUsers: React.FC = () => {
         setUsers(response.data.users);
         setLoading(false);
         toast.success("Users fetched successfully!");
-      } catch (error:any) {
+      } catch (error: any) {
         setError(error.response?.data?.error || "An error occurred");
         setLoading(false);
         toast.error("Failed to fetch users");
@@ -38,7 +38,11 @@ const FetchUsers: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <p className="flex items-center justify-center text-60 mt-20">
+        Loading...
+      </p>
+    );
   }
 
   if (error) {
@@ -50,16 +54,35 @@ const FetchUsers: React.FC = () => {
       <Title>Users List</Title>
       <UserList>
         {users.map((user) => (
-          <UserItem key={user._id}>
-            <UserInfo><strong>ID:</strong> {user._id}</UserInfo>
-            <UserInfo><strong>Grievance Type:</strong> {user.grievanceType}</UserInfo>
-            <UserInfo><strong>Description:</strong> {user.description}</UserInfo>
-            <UserInfo><strong>Severity:</strong> {user.severity}</UserInfo>
-            <UserInfo><strong>Status:</strong> {user.status}</UserInfo>
-            <UserInfo><strong>Created At:</strong> {new Date(user.createdAt).toLocaleString()}</UserInfo>
-            <UserInfo><strong>Documents:</strong> {user.documents.join(", ")}</UserInfo>
-            <Divider />
-          </UserItem>
+          <>
+            <UserItem key={user._id}>
+              <UserInfo>
+                <strong>ID:</strong> {user._id}
+              </UserInfo>
+              <UserInfo>
+                <strong>Grievance Type:</strong> {user.grievanceType}
+              </UserInfo>
+              <UserInfo>
+                <strong>Description:</strong> {user.description}
+              </UserInfo>
+              <UserInfo>
+                <strong>Severity:</strong> {user.severity}
+              </UserInfo>
+              <UserInfo>
+                <strong>Status:</strong> {user.status}
+              </UserInfo>
+              <UserInfo>
+                <strong>Created At:</strong>{" "}
+                {new Date(user.createdAt).toLocaleString()}
+              </UserInfo>
+              <UserInfo>
+                <strong>Documents:</strong> {user.documents.join(", ")}
+              </UserInfo>
+              <Divider />
+            </UserItem>
+
+            
+          </>
         ))}
       </UserList>
       <BackLink href="/">Back to Home</BackLink>
