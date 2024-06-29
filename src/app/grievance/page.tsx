@@ -6,10 +6,8 @@ import { toast } from "react-hot-toast";
 import Link from "next/link";
 
 interface GrievanceForm {
-  employeeId: string;
   grievanceType: string;
   description: string;
-  department: string;
   severity: string;
   documents: string[];
 }
@@ -18,10 +16,8 @@ const GrievancePage: React.FC = () => {
   const router = useRouter();
 
   const [grievance, setGrievance] = useState<GrievanceForm>({
-    employeeId: "",
     grievanceType: "",
     description: "",
-    department: "",
     severity: "Low",
     documents: []
   });
@@ -56,18 +52,6 @@ const GrievancePage: React.FC = () => {
         <h1 className="text-2xl font-semibold mb-6 text-center">{loading ? "Processing" : "Submit Grievance"}</h1>
         <hr className="mb-6" />
         <div className="mb-4">
-          <label htmlFor="employeeId" className="block text-sm font-medium text-gray-700">Employee ID</label>
-          <input
-            type="text"
-            id="employeeId"
-            name="employeeId"
-            value={grievance.employeeId}
-            onChange={handleInputChange}
-            placeholder="Enter Employee ID"
-            className="mt-1 p-2 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500"
-          />
-        </div>
-        <div className="mb-4">
           <label htmlFor="grievanceType" className="block text-sm font-medium text-gray-700">Grievance Type</label>
           <input
             type="text"
@@ -87,18 +71,6 @@ const GrievancePage: React.FC = () => {
             value={grievance.description}
             onChange={handleInputChange}
             placeholder="Enter grievance description"
-            className="mt-1 p-2 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="department" className="block text-sm font-medium text-gray-700">Department</label>
-          <input
-            type="text"
-            id="department"
-            name="department"
-            value={grievance.department}
-            onChange={handleInputChange}
-            placeholder="Enter department"
             className="mt-1 p-2 border border-gray-300 rounded-lg w-full focus:ring-blue-500 focus:border-blue-500"
           />
         </div>

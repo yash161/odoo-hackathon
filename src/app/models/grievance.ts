@@ -2,19 +2,11 @@ import mongoose from "mongoose";
 
 
 const grievanceSchema = new mongoose.Schema({
-    employeeId: {
-        type: Number,
-        required: true
-    },
     grievanceType: {
         type: String,
         required: true
     },
     description: {
-        type: String,
-        required: true
-    },
-    department: {
         type: String,
         required: true
     },
