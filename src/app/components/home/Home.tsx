@@ -40,7 +40,7 @@ function Home() {
               Employees can submit grievances detailing their concerns.
             </Typography>
             <Box sx={{ mt: 2 }}>
-              <Link href="/grievances" passHref>
+              <Link href="/grievance" passHref>
                 <Button variant="contained">Submit Grievance</Button>
               </Link>
             </Box>
