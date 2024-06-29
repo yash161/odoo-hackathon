@@ -10,9 +10,19 @@ interface Grievance {
     status: string;
 }
 
+interface Summary {
+    total: number;
+    submitted: number;
+    inProgress: number;
+    resolved: number;
+    low: number;
+    medium: number;
+    high: number;
+}
+
 const Overview: React.FC = () => {
     const [grievances, setGrievances] = useState<Grievance[]>([]);
-    const [summary, setSummary] = useState({
+    const [summary, setSummary] = useState<Summary>({
         total: 0,
         submitted: 0,
         inProgress: 0,
@@ -25,24 +35,48 @@ const Overview: React.FC = () => {
 
     useEffect(() => {
         fetch('/api/users/assign')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => { throw new Error(text) });
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.success) {
+                    console.log('Fetched grievances:', data.grievances);
                     setGrievances(data.grievances);
                     calculateSummary(data.grievances);
                 } else {
                     setError(data.message);
                 }
             })
-            .catch(error => setError(error.message));
+            .catch(error => {
+                console.error('Error fetching grievances:', error);
+                setError('Failed to fetch grievances. Please try again later.');
+            });
     }, []);
 
     const calculateSummary = (grievances: Grievance[]) => {
         const summary = grievances.reduce(
-            (acc, grievance) => {
+            (acc: Summary, grievance) => {
                 acc.total += 1;
-                acc[grievance.status.toLowerCase()] += 1;
-                acc[grievance.severity.toLowerCase()] += 1;
+
+                if (grievance.status.toLowerCase() === 'submitted') {
+                    acc.submitted += 1;
+                } else if (grievance.status.toLowerCase() === 'in progress') {
+                    acc.inProgress += 1;
+                } else if (grievance.status.toLowerCase() === 'resolved') {
+                    acc.resolved += 1;
+                }
+
+                if (grievance.severity.toLowerCase() === 'low') {
+                    acc.low += 1;
+                } else if (grievance.severity.toLowerCase() === 'medium') {
+                    acc.medium += 1;
+                } else if (grievance.severity.toLowerCase() === 'high') {
+                    acc.high += 1;
+                }
+
                 return acc;
             },
             {
@@ -55,6 +89,7 @@ const Overview: React.FC = () => {
                 high: 0
             }
         );
+        console.log('Calculated summary:', summary);
         setSummary(summary);
     };
 
