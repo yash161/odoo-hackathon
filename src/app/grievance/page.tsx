@@ -31,7 +31,7 @@ const GrievancePage: React.FC = () => {
       console.log("Successfully submitted grievance", response.data);
       toast.success("Grievance submitted successfully");
       setTimeout(() => {
-        router.push("/"); // Redirect to dashboard after successful submission
+        router.push("/userdashboard"); // Redirect to dashboard after successful submission
       }, 1000);
     } catch (error: any) {
       console.error("Failed to submit grievance", error.message);
@@ -107,8 +107,8 @@ const GrievancePage: React.FC = () => {
         >
           {loading ? "Submitting..." : "Submit Grievance"}
         </button>
-        <Link href="/dashboard" className="block mt-4 text-center text-blue-500 hover:text-blue-700">
-          Visit Dashboard
+        <Link href="/userdashboard" className="block mt-4 text-center text-blue-500 hover:text-blue-700">
+          Go Back
         </Link>
       </div>
     </div>
