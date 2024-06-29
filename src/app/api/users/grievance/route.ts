@@ -12,13 +12,11 @@ export async function POST(request: NextRequest) {
         await mongoose.connection; // Wait for MongoDB connection
 
         const reqBody = await request.json();
-        const { employeeId, grievanceType, description, department, severity, documents } = reqBody;
+        const {  grievanceType, description, severity, documents } = reqBody;
 
         const newGrievance = new Grievance({
-            employeeId,
             grievanceType,
             description,
-            department,
             severity,
             documents,
             status: 'Submitted'
