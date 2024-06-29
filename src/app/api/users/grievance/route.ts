@@ -9,7 +9,7 @@ connect(); // Establish MongoDB connection
 
 export async function POST(request: NextRequest) {
     try {
-        await mongoose.connection; // Wait for MongoDB connection
+        await mongoose.connection; 
 
         const reqBody = await request.json();
         const {  grievanceType, description, severity, documents } = reqBody;
