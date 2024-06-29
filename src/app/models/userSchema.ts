@@ -33,7 +33,15 @@ const userSchema = new mongoose.Schema({
     department : {
         type : String,
         required : [true]
-    }
+    },
+    isVerified : {
+        type : Boolean
+        default : 'False'
+    },
+    isAdmin : {
+        type : Boolean
+        default : 'False'
+    },
 
 })
 
