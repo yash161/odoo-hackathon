@@ -28,6 +28,8 @@ export const config = {
     '/verifyemail',
     '/profile',
     '/verifyforgot',
-    '/grievance'
+    '/grievance',
+    '/userdashboard',
+    '/viewgrievance'
   ],
 }

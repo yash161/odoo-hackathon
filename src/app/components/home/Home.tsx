@@ -61,21 +61,6 @@ function Home() {
             </Box>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Paper sx={{ p: 2, textAlign: 'center' }}>
-            <Typography variant="h6" gutterBottom>
-              Admin Dashboard
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              View all submitted grievances and assign them for resolution.
-            </Typography>
-            <Box sx={{ mt: 2 }}>
-              <Link href="/dashboard" passHref>
-                <Button variant="contained">Go to Dashboard</Button>
-              </Link>
-            </Box>
-          </Paper>
-        </Grid>
       </Grid>
     </Container>
   )

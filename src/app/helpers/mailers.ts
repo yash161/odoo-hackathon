@@ -10,7 +10,7 @@ export const sendMail = async ({email , emailType , userId} : any) => {
             await User.findByIdAndUpdate(userId,{$set:{verification_code: hashedToken}})
         }
           else if(emailType === 'RESET'){
-            await User.findByIdAndUpdate(userId,{$set:{fforgot_password: hashedToken}})
+            await User.findByIdAndUpdate(userId,{$set:{forgot_password: hashedToken}})
         }
 
         const transport = nodemailer.createTransport({

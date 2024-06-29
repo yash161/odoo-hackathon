@@ -17,7 +17,7 @@ const UpdateGrievanceForm: React.FC = () => {
             try {
                 const response = await axios.get('/api/users/grievancetype');
                 setGrievanceTypes(response.data.grievanceTypes);
-            } catch (error) {
+            } catch (error:any) {
                 console.error('Error fetching grievance types:', error.response?.data || error.message);
             }
         };
@@ -34,7 +34,7 @@ const UpdateGrievanceForm: React.FC = () => {
                         params: { grievanceType }
                     });
                     setEmployeeIds(response.data.employeeIds);
-                } catch (error) {
+                } catch (error:any) {
                     console.error('Error fetching employee IDs:', error.response?.data || error.message);
                 }
             };
@@ -55,7 +55,7 @@ const UpdateGrievanceForm: React.FC = () => {
             setMessage('Grievance status updated successfully'); // Set success message
             setTimeout(() => setMessage(null), 3000); // Clear message after 3 seconds
             console.log('Grievance status updated successfully:', response.data);
-        } catch (error) {
+        } catch (error:any) {
             setMessage('Error updating grievance status'); // Set error message
             setTimeout(() => setMessage(null), 3000); // Clear message after 3 seconds
             console.error('Error updating grievance status:', error.response?.data || error.message);
