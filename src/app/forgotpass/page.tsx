@@ -16,34 +16,21 @@ const UsernameForm: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="sm">
-      <Box
-        component="form"
-        onSubmit={handleSubmit}
-        sx={{
-          mt: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 p-5">
+      <h6 className="text-xl mb-4 text-gray-700">Enter Email :</h6>
+      <input
+        type="email"
+        className="p-3 text-base border border-gray-300 rounded mb-4 w-full max-w-md"
+        placeholder="Email"
+      />
+      <button
+        className="p-3 text-base text-white bg-blue-600 rounded hover:bg-blue-700 transition duration-300"
+        onClick={handleClick}
       >
-        <Typography variant="h5" gutterBottom>
-          Enter Username
-        </Typography>
-        <TextField
-          label="Username"
-          variant="outlined"
-          value={username}
-          onChange={handleInputChange}
-          fullWidth
-          sx={{ mb: 2 }}
-        />
-        <Button type="submit" variant="contained" color="primary">
-          Submit
-        </Button>
-      </Box>
-    </Container>
+        Submit
+      </button>
+    </div>
   );
 };
 
-export default UsernameForm;
+export default ForgotPass;
