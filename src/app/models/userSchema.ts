@@ -29,8 +29,10 @@ const userSchema = new mongoose.Schema({
     forgot_password : {
         type: String,
     },
+    department : {
+        type : String,
+        required : [true]
+    }
 
 })
 
-const User = mongoose.models.users || mongoose.model("users",userSchema)
-export default User
