@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
     employee_id: {
         type: Number,
         required : [true]
+        unique : true
     },
     verification_code : {
         type: String,
