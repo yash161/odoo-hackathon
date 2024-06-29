@@ -85,7 +85,7 @@ const FetchUsers: React.FC = () => {
           </>
         ))}
       </UserList>
-      <BackLink href="/">Back to Home</BackLink>
+      <BackLink href="/userdashboard">Back to Home</BackLink>
     </Container>
   );
 };

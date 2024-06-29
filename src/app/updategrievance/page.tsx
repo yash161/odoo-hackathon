@@ -9,6 +9,7 @@ const UpdateGrievanceForm: React.FC = () => {
     const [employeeIds, setEmployeeIds] = useState<number[]>([]);
     const [employeeId, setEmployeeId] = useState<string>('');
     const [status, setStatus] = useState<string>('Submitted');
+    const [message, setMessage] = useState<string | null>(null);
 
     useEffect(() => {
         // Fetch grievance types from the server
@@ -51,8 +52,12 @@ const UpdateGrievanceForm: React.FC = () => {
                 status: status,
             });
 
+            setMessage('Grievance status updated successfully'); // Set success message
+            setTimeout(() => setMessage(null), 3000); // Clear message after 3 seconds
             console.log('Grievance status updated successfully:', response.data);
         } catch (error) {
+            setMessage('Error updating grievance status'); // Set error message
+            setTimeout(() => setMessage(null), 3000); // Clear message after 3 seconds
             console.error('Error updating grievance status:', error.response?.data || error.message);
         }
     };
@@ -75,6 +80,11 @@ const UpdateGrievanceForm: React.FC = () => {
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
             <form onSubmit={handleSubmit} className="w-full max-w-md bg-white p-8 rounded shadow-md">
                 <h2 className="text-2xl font-bold mb-6 text-center">Update Grievance Status</h2>
+                {message && (
+                    <div className={`mb-4 text-center p-2 ${message.includes('Error') ? 'bg-red-500 text-white' : 'bg-green-500 text-white'}`}>
+                        {message}
+                    </div>
+                )}
                 <div className="mb-4">
                     <label htmlFor="grievanceType" className="block text-gray-700 mb-2">Grievance Type:</label>
                     <select
