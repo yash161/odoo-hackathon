@@ -52,7 +52,7 @@ const AdminDashboard: React.FC = () => {
               Update the status of grievances efficiently.
             </Typography>
             <Box sx={{ mt: 2 }}>
-              <Link href="/update-grievance" passHref>
+              <Link href="/updategrievance" passHref>
                 <Button variant="contained">Update Status</Button>
               </Link>
             </Box>
