@@ -28,6 +28,14 @@ const grievanceSchema = new mongoose.Schema({
     employee_id: {
         type: Number,
         required : [true],
+    },
+    isAssgined: {
+        type : String,
+        default : 'Admin'
+    },
+    isVisible : {
+        type : Boolean,
+        default : false
     }
 });
 
