@@ -95,7 +95,7 @@ const AdminDashboard: React.FC = () => {
               Assign grievances to appropriate personnel.
             </Typography>
             <Box sx={{ mt: 2 }}>
-              <Link href="/assign-grievances" passHref>
+              <Link href="/assignedtask" passHref>
                 <Button variant="contained">Assign Grievances</Button>
               </Link>
             </Box>
