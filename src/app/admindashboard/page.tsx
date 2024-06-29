@@ -70,7 +70,7 @@ const AdminDashboard: React.FC = () => {
               View all submitted grievances in detail.
             </Typography>
             <Box sx={{ mt: 2 }}>
-              <Link href="/view-grievances" passHref>
+              <Link href="/viewgrievance" passHref>
                 <Button variant="contained">View Grievances</Button>
               </Link>
             </Box>
