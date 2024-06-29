@@ -25,12 +25,25 @@ const Login: React.FC = () => {
 
       const data = await response.json();
 
-      if (response.ok) {
-        toast.success("Login successful!");
-        router.push("/dashboard");
-      } else {
-        toast.error(data.message || "Login failed");
+      console.log(data.data.isAdmin);
+      
+      if(data.data.isAdmin){
+        console.log("admin is here");
+        
+        router.push('/admindashboard')
       }
+      else{
+        console.log("user dashboard");
+        
+        router.push('/userdashboard')
+      }
+
+      // if (response.ok) {
+      //   toast.success("Login successful!");
+      //   router.push("/grievance");
+      // } else {
+      //   toast.error(data.message || "Login failed");
+      // }
     } catch (error) {
       toast.error("An error occurred. Please try again.");
     } finally {
