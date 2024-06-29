@@ -115,7 +115,7 @@ const Login: React.FC = () => {
             Not a member?{" "}
             <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
               Signup Here
-            </a>
+            </Link>
           </p>
         </div>
       </div>
