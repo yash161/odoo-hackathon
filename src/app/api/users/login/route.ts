@@ -45,7 +45,7 @@ export async function POST(request:NextRequest) {
         const response = NextResponse.json({
             message : "Done",
             success : true,
-            data:user.isAdmin
+            data:user
         })
 
         const token = jwt.sign(tokenData,process.env.TOKEN_SECRET!,{expiresIn : '1d'})
